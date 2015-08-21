@@ -1,1 +1,149 @@
 #simplemente enlazada
+/*
+Universidad del Valle de Guatemala
+Algoritmos y Estructura de Datos
+Sección: 10
+Jose Angel Ochoa Carne: 14230
+Diego Sosa. Carné: 14735
+30/07/2015
+Hoja de Trabajo 5
+*/
+
+public class SimplementeEnlazada<E> implements ADTlista<E>{
+protected Nodo<E> head;
+	protected int contador;
+	/**
+    * inicializa las variables
+    * @param 
+    * @return 
+    */
+	public SimplementeEnlazada(){
+		head=null; 
+		contador=0;
+	}
+	/**
+    * egresa valor de la lista 
+    * @param 
+    * @return valor (temp)
+    */
+	public E pop(){
+		E temp = this.getFirst();
+		this.removeFirst();
+		return temp;
+	}
+	/**
+    * ingresa valor a lista
+    * @param value
+    * @return 
+    */
+	public void push(E value){
+		this.addFirst(value);
+	}
+	/**
+    * obtiene el tamaño de la lista
+    * @param 
+    * @return tamaño
+    */
+	public int size(){
+		int elementos=0;
+		Nodo<E> finger=head;
+		while (finger != null){
+			elementos++;
+			finger = finger.getNext();
+			}
+			return elementos;
+	}
+	/**
+    * agrega un valor al principio de la lista
+    * @param value
+    * @return 
+    */
+	public void addFirst (E value){
+		head= new Nodo<E>(value,head);
+		contador++;
+		}
+	/**
+    * elimina el primer valor de la lista
+    * @param 
+    * @return valor 
+    */
+	public E removeFirst(){
+		Nodo<E> temp=head; 
+		head = head.getNext();
+		contador--;
+		return temp.getValue();
+		}
+	/**
+    * obtiene el primero valor de la lista
+    * @param 
+    * @return valor 
+    */
+	public E getFirst(){
+		return head.getValue();
+	}
+	/**
+    * agrega un valor al final de la lista
+    * @param value
+    * @return 
+    */
+	public void addLast (E value){
+		
+		Nodo<E> temp=new Nodo<E>(value,null);
+		if(head!=null)
+			{
+				Nodo<E> finger=head;
+				while (finger.getNext() != null){
+					finger = finger.getNext();
+				}
+			finger.setNext(temp);
+		} else head=temp;
+			contador++;
+			}
+		
+	/**
+    * obtiene el ultimo valor de la lista
+    * @param 
+    * @return valor
+    */
+	public E getLast(){
+		Nodo <E> finger=head;
+		Nodo <E> previous=null;
+		while (finger.getNext()!=null){
+			previous=finger;
+			finger.setNext(finger.getNext());
+		}
+		return finger.getValue();
+
+	}
+	/**
+    * elimina el ultimo valor en la lista
+    * @param 
+    * @return valor
+    */
+	public E removeLast(){
+		Nodo <E> finger=head;
+		Nodo <E> previous=null;
+		while (finger.getNext() !=null){
+			previous=finger;
+			finger = finger.getNext();
+			}
+		if (previous == null)
+			{
+				head=null;
+			}
+			else{
+				previous.setNext(null);
+				}
+			contador--;
+			return finger.getValue();
+			
+		}
+	/**
+    * verifica que un valor especifico se encuentre en la lista
+    * @param 
+    * @return 
+    */
+	public boolean contains(E value){
+			return false;
+		}	
+	}
