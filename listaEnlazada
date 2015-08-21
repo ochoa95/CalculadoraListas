@@ -1,1 +1,71 @@
 #lista enlazada
+/*
+Universidad del Valle de Guatemala
+Algoritmos y Estructura de Datos
+Sección: 10
+Jose Angel Ochoa Carne: 14230
+Diego Sosa. Carné: 14735
+30/07/2015
+Hoja de Trabajo 5
+*/
+
+public interface listaEnlazada<E>{
+	/**
+    * obtiene el tamaño de la lista
+    * @param 
+    * @return tamaño
+    */
+	public int size();
+	/**
+    * agrega un valor al principio de la lista
+    * @param value
+    * @return 
+    */
+	public void addFirst(E value);
+	/**
+    * elimina el primer valor de la lista
+    * @param 
+    * @return valor 
+    */
+	public E removeFirst(); 
+	/**
+    * elimina el ultimo valor en la lista
+    * @param 
+    * @return valor
+    */
+	public E removeLast(); 
+	/**
+    * agrega un valor al final de la lista
+    * @param value
+    * @return 
+    */
+	public void addLast(E value);
+	/**
+    * obtiene el primero valor de la lista
+    * @param 
+    * @return valor 
+    */
+	public E getFirst();
+	/**
+    * obtiene el ultimo valor de la lista
+    * @param 
+    * @return valor
+    */
+	public E getLast();
+	/**
+    * verifica que un valor especifico se encuentre en la lista
+    * @param 
+    * @return 
+    */
+	public boolean contains(E value);
+	/**
+    * verifica que la lista este vacia
+    * @param 
+    * @return vacia (true/false)
+    */
+	public boolean isEmpty();
+}
+
+/*
+Nodo, NodoDoble.
+Lista Enlazada, Lista Doblemente Enlazada, Lista Circular*/
