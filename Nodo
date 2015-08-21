@@ -1,1 +1,64 @@
 #nodo
+/*
+Universidad del Valle de Guatemala
+Algoritmos y Estructura de Datos
+Sección: 10
+Jose Angel Ochoa Carne: 14230
+Diego Sosa. Carné: 14735
+30/07/2015
+Hoja de Trabajo 5
+*/
+
+public class Nodo<E>{
+	protected E value;
+	protected Nodo<E> next;
+	/**
+    * incializar variables
+    * @param v,next
+    * @return 
+    */
+	public Nodo(E v, Nodo<E> next){
+		this.value = v;
+		this.next = next;
+	}
+	/**
+    * apunta al valor
+    * @param v
+    * @return 
+    */
+	public Nodo(E v){
+		this(v,null);
+	}
+	/**
+    * recorre los nodos hacia el siguiente
+    * @param nodo
+    * @return 
+    */
+	public void setNext(Nodo nodo){
+		next = nodo;
+	}
+	/**
+    * obtiene el valor del nodo siguiente
+    * @param 
+	* @return valor (next)
+    */
+	public Nodo getNext(){
+		return next;
+	}
+	/**
+    * establece valor para nodo especifico
+    * @param 
+    * @return 
+    */
+	public void setValue(E value){
+		this.value = value;
+	}
+	/**
+    * obtiene el valor del nodo actual
+    * @param 
+    * @return valor (value)
+    */
+	public E getValue(){
+		return value;
+	}
+}
