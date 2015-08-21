@@ -1,1 +1,55 @@
 #factory
+/*
+Universidad del Valle de Guatemala
+Algoritmos y Estructura de Datos
+Sección: 10
+Jose Angel Ochoa Carne: 14230
+Diego Sosa. Carné: 14735
+30/07/2015
+Hoja de Trabajo 5
+*/
+
+public class factory<E>{
+	/**
+    * cre aun objeto para realizar una lista de tipo simplemente enlazada, doblemente enlazada o circular
+    * @param stackType
+    * @return stackType (SimplementeEnlazada/DoblementeEnlazada/Circular)
+    */
+	public ADTlista<E> getLista(String stackType){
+		System.out.println("Otravez");
+		if(stackType.equals("Circular")){
+			return (new Circular<E>());
+		}
+		if(stackType.equals("Simplemente Enlazada")){
+			return (new SimplementeEnlazada<E>());
+		}
+		if(stackType.equals("Doblemente Enlazada")){
+			return (new DoblementeEnlazada<E>());
+		}
+		return new Circular<E>();
+	}
+	/**
+    * crea un objeto para realizar un stack de tipo array o vector
+    * @param stackType
+    * @return tipoStack (arrayList/vector)
+    */
+	public ADTStack<E> getStack(String stackType){
+			if(stackType.equals("Vector")){
+				System.out.println("Otravez");
+				return (new vector<E>(10));
+			}
+			if(stackType.equals("listArray")){
+				return (new arrayList<E>(10));
+			}
+			System.out.println("Noo");
+			return new arrayList<E>(10) ;
+	}
+	/**
+    * verifica que se haya ingresado una opcion valida
+    * @param 
+    * @return 
+    */
+	public void Prueba(){
+		System.out.println("Nooo");
+	}
+}
