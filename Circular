@@ -1,1 +1,132 @@
 #circular
+public class Circular<E> implements ADTlista<E>{
+	protected Nodo tail;
+	protected int size;
+	public Circular(){
+		tail = null;
+		size = 0;
+	}
+	/**
+    * egresa valor de la lista 
+    * @param 
+    * @return valor (temp)
+    */
+	public E pop(){
+		E temp = this.getFirst();
+		this.removeFirst();
+		return temp;
+	}
+	/**
+    * ingresa valor a lista
+    * @param value
+    * @return 
+    */
+	public void push(E value){
+		this.addFirst(value);
+	}
+	/**
+    * obtiene el tamaño de la lista
+    * @param 
+    * @return tamaño
+    */
+	public int size(){
+		return size;
+	}
+	/**
+    * agrega un valor al principio de la lista
+    * @param value
+    * @return 
+    */
+	public void addFirst(E value){
+		Nodo<E> nodo = new Nodo<E>(value);
+		if(tail!=null){
+			nodo.setNext(tail.getNext());
+			tail.setNext(nodo);
+		}
+		else{
+			tail = nodo;
+			tail.setNext(nodo);
+		}
+		size++;
+	}
+	/**
+    * elimina el primer valor de la lista
+    * @param 
+    * @return valor 
+    */
+	public E removeFirst(){
+		if(size!=0){
+			Nodo<E> head = tail.getNext();
+			if(head==tail)
+				tail = null; 	//Si sólo existe un nodo, será null
+			else
+				tail.setNext(head.getNext());	//La cola apuntará al elemento que apunta la cabeza para perder su referencia
+			size--;
+			return head.getValue();
+
+		}
+		else{
+			return null;
+		}
+	}
+	/**
+    * elimina el ultimo valor en la lista
+    * @param 
+    * @return valor
+    */
+	public E removeLast(){
+			Nodo<E> finger = tail;
+			while(finger.getNext()!=tail){ //Finger tendrá el penúltimo nodo
+				finger = finger.getNext();
+			}
+			Nodo<E> nodo = tail;
+			if(finger==tail)
+				tail = null;	//Si hay un sólo nodo, finger=tail, entonces se declara null.
+			else{
+				finger.setNext(tail.getNext()); //El penúltimo nodo
+				tail = finger;
+			}
+			size--;
+		return nodo.getValue();
+	}
+	/**
+    * agrega un valor al final de la lista
+    * @param value
+    * @return 
+    */
+	public void addLast(E value){
+		addFirst(value); 	//Se agrega el valor al inicio
+		tail = tail.getNext(); 	//Se rota la lista para que el elemento se pase a la cola
+		size++;
+	}
+	/**
+    * obtiene el primero valor de la lista
+    * @param 
+    * @return valor 
+    */
+	public E getFirst(){
+		Nodo head = tail.getNext(); //Apunta al Head
+		return (E) head.getValue();
+	}
+	/**
+    * obtiene el ultimo valor de la lista
+    * @param 
+    * @return valor
+    */
+	public E getLast(){
+		return (E)tail.getValue(); //Retorna el valor del tail
+	
+	}
+	/**
+    * verifica que un valor especifico se encuentre en la lista
+    * @param 
+    * @return esta(true/false)
+    */
+	public boolean contains(E value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+
+
+}
