@@ -1,1 +1,131 @@
 #doblemente enlazada
+public class DoblementeEnlazada<E> implements ADTlista<E>{
+protected DobleNodo<E> head;
+protected DobleNodo<E> tail;
+protected int contador;
+
+public DoblementeEnlazada(){
+	head=null;
+	tail=null;
+	contador=0;
+}
+	/**
+    * egresa valor de la lista 
+    * @param 
+    * @return valor (temp)
+    */
+	public E pop(){
+		E temp = this.getFirst();
+		this.removeF();
+		return temp;
+	}
+	/**
+    * ingresa valor a lista
+    * @param value
+    * @return 
+    */
+	public void push(E value){
+		this.addFirst(value);
+	}
+	/**
+    * agrega un valor al principio de la lista
+    * @param value
+    * @return 
+    */
+	public void addFirst(E value){
+		head = new DobleNodo<E>(value, head, null);
+		contador++;
+	}
+	/**
+    * elimina el primer valor de la lista
+    * @param 
+    * @return valor 
+    */
+	public void removeF(){
+		head = head.getNext();
+		contador--;
+	}
+	/**
+    * obtiene el primero valor de la lista
+    * @param 
+    * @return valor 
+    */
+	public E getFirst(){
+		return head.getValue();
+	}
+	/**
+    * obtiene el tamaño de la lista
+    * @param 
+    * @return tamaño
+    */
+	public int size(){
+		int elementos=0;
+		DobleNodo<E> finger = head;
+		while (finger != null){
+				elementos++;
+				finger.setNext(finger.getNext());
+			}
+		return elementos;
+	}
+	/**
+    * agrega un valor al final de la lista
+    * @param value
+    * @return 
+    */
+	public void addLast (E value){
+		tail = new DobleNodo<E>(value,null,tail);
+		if(head==null){
+			head = tail;
+			contador++;
+		}
+	}
+	/**
+    * elimina el ultimo valor en la lista
+    * @param 
+    * @return valor
+    */
+	public E removeLast(){
+		DobleNodo<E> temp = tail;
+		tail = tail.getPrevious();
+		if (tail == null){
+			head = null;
+		}
+		else {
+			tail.setNext(null);
+		}
+		contador--;
+		return temp.getValue();
+		}
+	/**
+    * obtiene el ultimo valor de la lista
+    * @param 
+    * @return valor
+    */
+	public E getLast(){
+		DobleNodo <E> finger=head;
+		DobleNodo <E> previous=null;
+		while (finger.getNext()!=null){
+			previous=finger;
+			finger.setNext(finger.getNext());
+		}
+		return finger.getValue();
+	}
+	/**
+    * elimina el primer valor de la lista
+    * @param 
+    * @return valor 
+    */
+	public E removeFirst() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	/**
+    * verifica que un valor especifico se encuentre en la lista
+    * @param 
+    * @return 
+    */
+	public boolean contains(E value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	}
