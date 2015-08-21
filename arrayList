@@ -1,1 +1,73 @@
 #arrayList
+/*
+Universidad del Valle de Guatemala
+Algoritmos y Estructura de Datos
+Sección: 10
+Jose Angel Ochoa Carne: 14230
+Diego Sosa. Carné: 14735
+30/07/2015
+Hoja de Trabajo 5
+*/
+
+public class arrayList<E> implements ADTStack<E>{
+	private E[] value;
+	private int size, top;
+ /**
+     * Inicializar variables
+     * @param size
+     * @return 
+     */
+	public arrayList(int size){
+		top =-1;
+		value = (E[]) new Object[size];
+	}
+ /**
+     * eliminacion de todo el array
+     * @param 
+     * @return 
+     */
+	public void empty(){
+		System.out.println("empty");
+	}
+	 /**
+     * verificacion de existencia de un elemento en el array
+     * @param 
+     * @return vacio o no vacio (true/false)
+     */
+	public boolean isEmpty(){
+		System.out.println("isEmpty");
+		return true;
+	}
+	 /**
+     * ingreso de dato al array
+     * @param x
+     * @return 
+     */
+	public void push(E x){
+		value[++top] = x;
+		System.out.println("Element: '"+value[top]+"' pushed");
+	}
+	 /**
+     * egreso de datos del array
+     * @param 
+     * @return value  
+     */
+	public E pop() throws Exception{
+		System.out.println("pop");
+		return value[top--];
+	}
+	 /**
+     * calculo de la extension del array 
+     * @param 
+     * @return largo
+     */
+	public int size(){
+		System.out.println(value.length);
+		return value.length;
+	}
+	
+	public E peek() throws Exception{
+		System.out.println("peek");
+		return value[0];
+	}
+}
