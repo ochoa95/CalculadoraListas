@@ -1,1 +1,77 @@
 #lista ADT
+/*
+Universidad del Valle de Guatemala
+Algoritmos y Estructura de Datos
+Sección: 10
+Jose Angel Ochoa Carne: 14230
+Diego Sosa. Carné: 14735
+30/07/2015
+Hoja de Trabajo 5
+*/
+
+public interface ADTlista<E>{
+	 /**
+     * mide el tamaño de la lista
+     * @param 
+     * @return 
+     */
+	public int size();
+	/**
+    * agrega al primer valor
+    * @param 
+    * @return 
+    */
+	public void addFirst(E value);
+	/**
+    * elimina el primer valor en la lista
+    * @param 
+    * @return 
+    */
+	public E removeFirst(); 
+	/**
+    * elimina el ultimo valor en la lista
+    * @param 
+    * @return 
+    */
+	public E removeLast(); //pop
+	/**
+    * agrega en el final de la lista 
+    * @param 
+    * @return 
+    */
+	public void addLast(E value);
+	/**
+    * obtiene el primer valor en la lista
+    * @param 
+    * @return 
+    */
+	public E getFirst();
+	/**
+    * obtiene el ultimo valor en la lista
+    * @param 
+    * @return 
+    */
+	public E getLast();
+	/**
+    * verifica si un valor en especifico se encuentra en la lista
+    * @param 
+    * @return 
+    */
+	public boolean contains(E value);
+	/**
+    * ingresa un valor a la lista
+    * @param 
+    * @return 
+    */
+	public void push(E value);
+	/**
+    * egresa un valor de la lista
+    * @param 
+    * @return 
+    */
+	public E pop();
+}
+
+/*
+Nodo, NodoDoble.
+Lista Enlazada, Lista Doblemente Enlazada, Lista Circular*/
