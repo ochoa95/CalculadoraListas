@@ -1,1 +1,215 @@
 #calculadora
+/*
+Universidad del Valle de Guatemala
+Algoritmos y Estructura de Datos
+Sección: 10
+Diego Morales. Carné: 14012
+Diego Sosa. Carné: 14735
+Julio González. Carné: 14096
+30/07/2015
+Hoja de Trabajo 2
+*/
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+
+
+public class Calculadora<P> implements ADTCalculadora<P>{
+	private String lineWspace;
+	private P value;
+	private Double a,b,c;
+	private int counter;
+	private boolean first;
+	private factory<Double> factory = new factory<Double>();
+	private ADTlista<Double> n1stack = null;
+	private ADTStack<Double> n2stack = null;
+	private boolean lista = false;
+	
+	public void first(){
+		Scanner sc = new Scanner(System.in);
+	    String i = sc.nextLine();
+	    
+	    if(i.equals("Lista")){
+	    	lista = true;
+	    	i = sc.nextLine();
+	    	ADTlista<Double> nstack = factory.getLista(i);
+	    	this.n1stack = nstack;
+	    }
+	    if(i.equals("Stack")){
+	    	i = sc.nextLine();
+	    	ADTStack<Double> nstack = factory.getStack(i);
+	    	this.n2stack = nstack;
+	    }
+	}
+	public void readFile(String file) throws FileNotFoundException, Exception{
+		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+		    String line;
+		    while ((line = br.readLine()) != null) {
+		       lineWspace = line.replaceAll(" ", "");
+		       System.out.println("Resultado: "+calcular());
+		       //System.out.println(lineWspace);
+		    }
+		}
+		System.out.println("readFile");
+				
+	}
+	public P calcular() throws Exception{
+		first = true;
+		
+		for (int i = 0;i < lineWspace.length(); i++){
+	    	//System.out.println(lineWspace.charAt(i));
+		    if (lineWspace.charAt(i) == 43){
+		    	counter = 0;
+				try {
+					if (lista){
+						a = n1stack.pop();
+					} else {
+						a = n2stack.pop();
+					}
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    	
+				try {
+					if (lista){
+						b = n1stack.pop();
+					} else {
+						b = n2stack.pop();
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    	
+				c = a+b;
+				if (lista){
+					n1stack.push(c);
+				} else {
+					n2stack.push(c);
+				}
+		    	
+		    	//System.out.println("Encontramos una suma en "+i);
+		    } else if (lineWspace.charAt(i) == 42){
+		    	counter = 0;
+		    	try {
+		    		if (lista){
+						a = n1stack.pop();
+					} else {
+						a = n2stack.pop();
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    	
+				try {
+					if (lista){
+						b = n1stack.pop();
+					} else {
+						b = n2stack.pop();
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    	
+				c = a*b;
+				if (lista){
+					n1stack.push(c);
+				} else {
+					n2stack.push(c);
+				}
+		    	
+		    	//System.out.println("Encontramos una multiplicaci󮠥n "+i);
+		    } else if (lineWspace.charAt(i) == 45) {
+		    	counter = 0;
+		    	try {
+		    		if (lista){
+						a = n1stack.pop();
+					} else {
+						a = n2stack.pop();
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    	
+				try {
+					if (lista){
+						b = n1stack.pop();
+					} else {
+						b = n2stack.pop();
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    	
+				c = a-b;
+				if (lista){
+					n1stack.push(c);
+				} else {
+					n2stack.push(c);
+				}
+		    	
+		    	//System.out.println("Encontramos una resta en "+i);
+		    } else if (lineWspace.charAt(i) == 47){
+		    	try {
+		    		if (lista){
+						a = n1stack.pop();
+					} else {
+						a = n2stack.pop();
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    	
+				try {
+					if (lista){
+						b = n1stack.pop();
+					} else {
+						b = n2stack.pop();
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    	
+				c = a/b;
+				if (lista){
+					n1stack.push(c);
+				} else {
+					n2stack.push(c);
+				}
+		    	
+		    	//System.out.println("Encontramos una divisi󮠥n "+i);	
+		    } else {
+		    	if (lista){
+					n1stack.push((double)Character.getNumericValue(lineWspace.charAt(i)));
+				} else {
+					n2stack.push((double)Character.getNumericValue(lineWspace.charAt(i)));
+				}
+		    }
+		}
+		System.out.println("calcular");
+		
+		try {
+			if (lista){
+				value = (P)n1stack.pop();
+			} else {
+				value = (P)n2stack.pop();
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return value;
+	}
+	
+}
