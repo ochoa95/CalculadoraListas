@@ -1,1 +1,82 @@
 #Vector
+import java.util.Vector;
+/*
+Universidad del Valle de Guatemala
+Algoritmos y Estructura de Datos
+Sección: 10
+Jose Angel Ochoa Carne: 14230
+Diego Sosa. Carné: 14735
+30/07/2015
+Hoja de Trabajo 5
+*/
+
+public class vector<E> implements ADTStack<E>{
+	private Vector<E> value;
+	private E vpop;
+	private int first, last;
+	/**
+    * inicializa las variables
+    * @param size
+    * @return 
+    */
+	public vector(int size){
+		value = new Vector<E>(size);
+		first = 0;
+		last = first;
+	}
+	/**
+    * vacia el vector
+    * @param 
+    * @return 
+    */
+	public void empty(){
+		System.out.println("empty");
+	}
+	/**
+    * verifica que el vector este vacio
+    * @param 
+    * @return vacio o no (true/false) 
+    */
+	public boolean isEmpty(){
+		System.out.println("isEmpty");
+		return true;
+	}
+	/**
+    * ingresa valor al vector 
+    * @param x
+    * @return 
+    */
+	public void push(E x){
+		last++;
+		value.add(x);
+	}
+	/**
+    * egresa valor del vector
+    * @param 
+    * @return valor 
+    */
+	public E pop() throws Exception{
+		vpop = value.get(first);
+		System.out.println("pop "+vpop);
+		first++;
+		return vpop;
+	}
+	/**
+    * obtiene el tamaño del vector
+    * @param 
+    * @return tamaño (fist-last)
+    */
+	public int size(){
+		System.out.println(first-last);
+		return first-last;
+	}
+	/**
+    * revisa si un valor existe en el vector
+    * @param 
+    * @return valor
+    */
+	public E peek() throws Exception{
+		System.out.println("peek");
+		return value.get(first);
+	}
+}
